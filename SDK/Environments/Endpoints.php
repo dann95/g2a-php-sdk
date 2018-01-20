@@ -15,7 +15,7 @@ class Endpoints
         $endpoints = [
             'PRODUCTION' => [
                 'quote' => 'https://checkout.pay.g2a.com/index/createQuote',
-                'merchant' => '	https://pay.g2a.com/',
+                'merchant' => 'https://pay.g2a.com/',
                 'rest' => 'https://pay.g2a.com/rest'
             ],
             'SANDBOX' => [
