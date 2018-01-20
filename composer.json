@@ -1,0 +1,20 @@
+{
+    "name": "dann95/g2a-sdk",
+    "description": "G2A SDK",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "ocramius/generated-hydrator": "^2.2",
+        "doctrine/collections": "^1.5"
+    },
+    "authors": [
+        {
+            "name": "Daniel Rubin",
+            "email": "danielrubin95@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "G2A\\": "SDK/"
+        }
+    }
+}
