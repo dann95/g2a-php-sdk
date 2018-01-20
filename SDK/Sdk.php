@@ -4,6 +4,7 @@ namespace G2A;
 
 use G2A\Auth\CredentialsBag;
 use G2A\Crypto\Crypto;
+use G2A\Environments\Endpoints;
 use G2A\Handlers\Notification;
 use G2A\Handlers\Payment;
 use G2A\Handlers\Subscription;
@@ -15,6 +16,7 @@ class Sdk
      * @var CredentialsBag
      */
     private $credentials;
+
     /**
      * @var Client
      */
@@ -26,6 +28,11 @@ class Sdk
     private $crypto;
 
     /**
+     * @var Endpoints
+     */
+    private $endpoints;
+
+    /**
      * Sdk constructor.
      * @param $apiHash
      * @param $merchantEmail
@@ -35,6 +42,7 @@ class Sdk
     public function __construct($apiHash, $merchantEmail, $apiSecret, $env = 'PRODUCTION')
     {
         $this->credentials = new CredentialsBag($apiHash, $merchantEmail, $apiSecret);
+        $this->endpoints = new Endpoints($env);
         $this->crypto = new Crypto();
         $this->httpClient = new Client(['defaults' => [
             'headers' => [
@@ -89,5 +97,13 @@ class Sdk
     public function credentials()
     {
         return $this->credentials;
+    }
+
+    /**
+     * @return Endpoints
+     */
+    public function endpoints()
+    {
+        return $this->endpoints;
     }
 }
