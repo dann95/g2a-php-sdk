@@ -3,9 +3,9 @@
 namespace G2A\Handlers;
 
 use G2A\Checkout\Cart;
-use G2A\Entities\Payments\Checkout;
 use GuzzleHttp\Psr7\Request;
 use G2A\Handlers\AbstractHandler;
+use G2A\Entities\Payments\Checkout;
 use G2A\Transformers\PaymentTransformer;
 use G2A\Transformers\CheckoutTransformer;
 
@@ -17,8 +17,8 @@ class Payment extends AbstractHandler
      */
     public function find($id)
     {
-        $request = new Request('get', 'https://api.myjson.com/bins/dth61');
-        $transformer = new PaymentTransformer();
+        $request = new Request('get', $this->sdk->endpoints()->rest()."transactions/{$id}");
+        $transformer = new PaymentTransformer(['id' => $id]);
         return $this->handleApiRequest($request, $transformer);
     }
 

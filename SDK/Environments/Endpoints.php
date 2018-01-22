@@ -16,12 +16,12 @@ class Endpoints
             'PRODUCTION' => [
                 'quote' => 'https://checkout.pay.g2a.com/index/',
                 'merchant' => 'https://pay.g2a.com/',
-                'rest' => 'https://pay.g2a.com/rest'
+                'rest' => 'https://pay.g2a.com/rest/'
             ],
             'SANDBOX' => [
                 'quote' => 'https://checkout.test.pay.g2a.com/index/',
                 'merchant' => 'https://www.test.pay.g2a.com/',
-                'rest' => 'https://www.test.pay.g2a.com/rest'
+                'rest' => 'https://www.test.pay.g2a.com/rest/'
             ],
         ];
 
