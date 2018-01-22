@@ -14,7 +14,10 @@ class PaymentTransformer implements TransformerContract
 {
     public function transform(Response $response, Sdk $sdk)
     {
-        $decoded = \GuzzleHttp\json_decode($response->getBody());
-        return Payment::populate((array) $decoded, $sdk);
+        if($response->getStatusCode() === 200 || $response->getStatusCode() === 201) {
+            $decoded = \GuzzleHttp\json_decode($response->getBody());
+            return Payment::populate((array) $decoded, $sdk);
+        }
+        return Payment::populate(['status' => 'fail'], $sdk);
     }
 }

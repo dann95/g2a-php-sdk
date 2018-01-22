@@ -39,8 +39,7 @@ abstract class AbstractHandler
             return $transformer->transform($res, $this->sdk);
 
         }catch (\Exception $exception) {
-            var_dump($exception->getResponse()->getBody()->getContents());
-            exit();
+            return $transformer->transform($exception->getResponse(), $this->sdk);
         }
     }
 }

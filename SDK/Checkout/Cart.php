@@ -1,6 +1,8 @@
 <?php
 
+
 namespace G2A\Checkout;
+
 
 class Cart
 {
@@ -16,18 +18,30 @@ class Cart
      * @var string
      */
     private $furl;
-
+    /**
+     * @var string
+     */
     private $address;
+    /**
+     * @var string
+     */
+    private $currency;
+    /**
+     * @var mixed
+     */
+    private $orderId;
 
     /**
      * Cart constructor.
      * @param $successUrl
      * @param $failUrl
      */
-    public function __construct($successUrl, $failUrl)
+    public function __construct($orderId, $successUrl, $failUrl, $currency = 'USD')
     {
         $this->surl = $successUrl;
         $this->furl = $failUrl;
+        $this->currency = $currency;
+        $this->orderId = $orderId;
     }
 
     /**
@@ -50,8 +64,26 @@ class Cart
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function __toCheckout()
     {
-        //@todo return array for Guzzle send request.
+        $items = array_map(function ($i) {
+            return $i->__toCart();
+        }, $this->items);
+
+        $result = [
+            'order_id' => $this->orderId,
+            'url_failure' => $this->furl,
+            'url_ok' => $this->surl,
+            'currency' => $this->currency,
+            'amount' => array_reduce($items, function ($res, $item) {
+                return $res += $item['amount'];
+            }, 0),
+            'items' => $items
+        ];
+
+        return $result;
     }
 }

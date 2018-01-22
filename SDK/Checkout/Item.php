@@ -6,7 +6,7 @@ class Item
 {
     private $sku;
     private $name;
-    private $amount;
+    private $price;
     private $qty;
     private $id;
     private $url;
@@ -17,7 +17,7 @@ class Item
      * Item constructor.
      * @param null $sku
      * @param null $name
-     * @param null $amount
+     * @param null $price
      * @param null $qty
      * @param null $id
      * @param null $url
@@ -26,7 +26,7 @@ class Item
      */
     public function __construct($sku = null,
                                 $name = null,
-                                $amount = null,
+                                $price = null,
                                 $qty = null,
                                 $id = null,
                                 $url = null,
@@ -35,7 +35,7 @@ class Item
     {
         $this->sku = $sku;
         $this->name = $name;
-        $this->amount = $amount;
+        $this->price = $price;
         $this->qty = $qty;
         $this->id = $id;
         $this->url = $url;
@@ -60,16 +60,6 @@ class Item
     public function setName($name)
     {
         $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @param $amount
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
         return $this;
     }
 
@@ -130,6 +120,6 @@ class Item
     {
         return array_filter(get_object_vars($this), function ($i) {
             return $i !== null;
-        });
+        }) + ['amount' => $this->price * $this->qty];
     }
 }

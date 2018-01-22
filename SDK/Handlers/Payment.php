@@ -3,10 +3,11 @@
 namespace G2A\Handlers;
 
 use G2A\Checkout\Cart;
-use G2A\Handlers\AbstractHandler;
-use G2A\Transformers\CheckoutTransformer;
-use G2A\Transformers\PaymentTransformer;
+use G2A\Entities\Payments\Checkout;
 use GuzzleHttp\Psr7\Request;
+use G2A\Handlers\AbstractHandler;
+use G2A\Transformers\PaymentTransformer;
+use G2A\Transformers\CheckoutTransformer;
 
 class Payment extends AbstractHandler
 {
@@ -21,22 +22,25 @@ class Payment extends AbstractHandler
         return $this->handleApiRequest($request, $transformer);
     }
 
-    public function create(Cart $cart = null)
+    /**
+     * @param Cart $cart
+     * @return Checkout
+     */
+    public function create(Cart $cart)
     {
-        $body = <<<STRING
-api_hash=d860e380-4894-40c6-8eec-c32313f6e4bb
-&hash={$this->sdk->crypto()->payment('2845', 15, 'BRL', $this->sdk->credentials()->getSecret())}
-&order_id=2845
-&amount=15
-&currency=BRL
-&url_failure=http://gisa.ninja
-&url_ok=http://gisa.ninja
-&items=[{"sku":"450","name":"Test Item","amount":"15","type":"item_type","qty":"1","price":15,"id":"5619","url":"http://example.com/products/item/example-item-name-5619"}]
-STRING;
-        $request = new Request('post', 'https://checkout.test.pay.g2a.com/index/createQuote',['Content-Type' => 'application/x-www-form-urlencoded'], $body);
-//        $request = new Request('post', 'https://requestb.in/11pcyz91',['Content-Type' => 'application/x-www-form-urlencoded'], $body);
-        $transformer = new CheckoutTransformer();
-        return $this->handleApiRequest($request, $transformer);
+        $sdk = $this->sdk;
+
+        $o = $cart->__toCheckout();
+        $o['api_hash'] = $sdk->credentials()->getHash();
+        $o['hash'] = $sdk->crypto()->payment($o['order_id'], $o['amount'], $o['currency'], $sdk->credentials()->getSecret());
+
+        $request = new Request('post',
+            $this->sdk->endpoints()->quote().'createQuote',
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
+            http_build_query($o)
+        );
+
+        return $this->handleApiRequest($request, (new CheckoutTransformer));
     }
 
     public function refund(\G2A\Entities\Payments\Payment $payment, $amount = null)

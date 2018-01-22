@@ -29,8 +29,6 @@ class Crypto
         return hash('sha256', $userOrderId.number_format($amount, 2).$currency.$ApiSecret);
     }
 
-//{transactionId}{userOrderId}{amount}{ApiSecret}
-
     /**
      * @param $transactionId
      * @param $userOrderId
