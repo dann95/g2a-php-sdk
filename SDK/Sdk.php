@@ -44,11 +44,11 @@ class Sdk
         $this->credentials = new CredentialsBag($apiHash, $merchantEmail, $apiSecret);
         $this->endpoints = new Endpoints($env);
         $this->crypto = new Crypto();
-        $this->httpClient = new Client(['defaults' => [
+        $this->httpClient = new Client([
             'headers' => [
-                'Authorization' => "{$apiHash};".Crypto::authorizationHeader($apiHash, $merchantEmail, $apiSecret)
+                'Authorization' => "{$apiHash}; ".$this->crypto->authorizationHeader($apiHash, $merchantEmail, $apiSecret)
             ]
-        ]]);
+        ]);
     }
 
     /**

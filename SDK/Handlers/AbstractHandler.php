@@ -28,14 +28,19 @@ abstract class AbstractHandler
     /**
      * @param Request $request
      * @param TransformerContract $transformer
-     * @return AbstractEntity|\G2A\Entities\Collections\AbstractEntityCollection
+     * @return AbstractEntity|\G2A\Entities\Collections\EntityCollection
      */
     public function handleApiRequest(Request $request, TransformerContract $transformer)
     {
-        $res = $this->sdk
-            ->getHttpClient()
-            ->send($request);
+        try {
+            $res = $this->sdk
+                ->getHttpClient()
+                ->send($request);
+            return $transformer->transform($res, $this->sdk);
 
-        return $transformer->transform($res, $this->sdk);
+        }catch (\Exception $exception) {
+            var_dump($exception->getResponse()->getBody()->getContents());
+            exit();
+        }
     }
 }
