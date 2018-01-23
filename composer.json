@@ -16,5 +16,8 @@
         "psr-4": {
             "G2A\\": "SDK/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
     }
 }
