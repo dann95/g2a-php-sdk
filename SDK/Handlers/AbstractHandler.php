@@ -28,7 +28,7 @@ abstract class AbstractHandler
     /**
      * @param Request $request
      * @param TransformerContract $transformer
-     * @return AbstractEntity|\G2A\Entities\Collections\EntityCollection
+     * @return AbstractEntity
      */
     public function handleApiRequest(Request $request, TransformerContract $transformer)
     {

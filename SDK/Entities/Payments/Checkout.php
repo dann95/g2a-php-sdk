@@ -24,4 +24,20 @@ class Checkout extends AbstractEntity
     {
         return $this->sdk->endpoints()->quote()."gateway?token=".$this->token;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
 }

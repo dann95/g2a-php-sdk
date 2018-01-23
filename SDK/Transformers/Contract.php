@@ -12,7 +12,7 @@ interface Contract
 {
     /**
      * @param Response $response
-     * @return AbstractEntity | EntityCollection
+     * @return AbstractEntity
      */
     public function transform(Response $response, Sdk $sdk);
 }

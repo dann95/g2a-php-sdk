@@ -42,6 +42,19 @@ class Crypto
     }
 
     /**
+     * @param $transactionId
+     * @param $userOrderId
+     * @param $amount
+     * @param $refundedAmount
+     * @param $ApiSecret
+     * @return string
+     */
+    public function refund($transactionId, $userOrderId, $amount, $refundedAmount, $ApiSecret)
+    {
+        return hash('sha256', $transactionId.$userOrderId.$amount.$refundedAmount.$ApiSecret);
+    }
+
+    /**
      * @param $name
      * @param $arguments
      * @return mixed
