@@ -3,6 +3,7 @@
 [![Total Downloads](https://poser.pugx.org/dann95/g2a-sdk/downloads)](https://packagist.org/packages/dann95/g2a-sdk)
 [![Latest Unstable Version](https://poser.pugx.org/dann95/g2a-sdk/v/unstable)](https://packagist.org/packages/dann95/g2a-sdk)
 [![License](https://poser.pugx.org/dann95/g2a-sdk/license)](https://packagist.org/packages/dann95/g2a-sdk)
+[![Build Status](https://travis-ci.org/dann95/g2a-php-sdk.svg?branch=master)](https://travis-ci.org/dann95/g2a-php-sdk)
 [![composer.lock](https://poser.pugx.org/dann95/g2a-sdk/composerlock)](https://packagist.org/packages/dann95/g2a-sdk)
 
 This SDK is an unofficial software with no warranties by G2A PAY ®, you can check more about G2A in: https://www.g2a.com/
