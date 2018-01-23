@@ -4,7 +4,6 @@ namespace G2A\Entities;
 
 use G2A\Sdk;
 use GeneratedHydrator\Configuration;
-use G2A\Entities\Collections\EntityCollection;
 
 abstract class AbstractEntity
 {
@@ -28,18 +27,5 @@ abstract class AbstractEntity
         $hydrator = new $hydratorClass;
         $instance = new static($sdk);
         return $hydrator->hydrate($fillable, $instance);
-    }
-
-    /**
-     * @param array $items
-     * @param Sdk $sdk
-     * @return EntityCollection
-     */
-    public static function populateCollection(array $items, Sdk $sdk)
-    {
-        $populated = array_map(function ($item) use($sdk) {
-            return self::populate($item, $sdk);
-        }, $items);
-        return new EntityCollection($populated);
     }
 }

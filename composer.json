@@ -3,8 +3,7 @@
     "description": "G2A SDK",
     "require": {
         "guzzlehttp/guzzle": "^6.3",
-        "ocramius/generated-hydrator": "^2.2",
-        "doctrine/collections": "^1.5"
+        "ocramius/generated-hydrator": "^2.2"
     },
     "authors": [
         {

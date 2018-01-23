@@ -12,7 +12,6 @@ This SDK is an unofficial software with no warranties by G2A PAY ®, you can che
 
 - PHP 7.0 and later.
 - Guzzle 6
-- Doctrine/Collection
 
 ## Composer
 
