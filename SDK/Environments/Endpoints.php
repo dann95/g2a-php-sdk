@@ -1,13 +1,13 @@
 <?php
 
-
 namespace G2A\Environments;
-
 
 class Endpoints
 {
     private $quote;
+
     private $merchant;
+
     private $rest;
 
     public function __construct($env)
@@ -16,22 +16,21 @@ class Endpoints
             'PRODUCTION' => [
                 'quote' => 'https://checkout.pay.g2a.com/index/',
                 'merchant' => 'https://pay.g2a.com/',
-                'rest' => 'https://pay.g2a.com/rest/'
+                'rest' => 'https://pay.g2a.com/rest/',
             ],
             'SANDBOX' => [
                 'quote' => 'https://checkout.test.pay.g2a.com/index/',
                 'merchant' => 'https://www.test.pay.g2a.com/',
-                'rest' => 'https://www.test.pay.g2a.com/rest/'
+                'rest' => 'https://www.test.pay.g2a.com/rest/',
             ],
         ];
 
-        if(! key_exists($key = strtoupper($env), $endpoints))
-            throw new \Exception("WRONG env!");
-
+        if (!array_key_exists($key = strtoupper($env), $endpoints)) {
+            throw new \Exception('WRONG env!');
+        }
         $this->quote = $endpoints[$key]['quote'];
         $this->merchant = $endpoints[$key]['merchant'];
         $this->rest = $endpoints[$key]['rest'];
-
     }
 
     public function quote()

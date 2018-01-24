@@ -1,6 +1,5 @@
 <?php
 
-
 namespace G2A\Transformers;
 
 use G2A\Entities\AbstractEntity;
@@ -21,6 +20,7 @@ class PaymentTransformer implements TransformerContract
 
     /**
      * PaymentTransformer constructor.
+     *
      * @param array $meta
      */
     public function __construct(array $meta = [])
@@ -30,8 +30,10 @@ class PaymentTransformer implements TransformerContract
 
     /**
      * @param Response $response
-     * @param Sdk $sdk
+     * @param Sdk      $sdk
+     *
      * @return AbstractEntity|EntityCollection|static
+     *
      * @throws G2aException
      * @throws ResourceNotFoundException
      */
@@ -40,12 +42,13 @@ class PaymentTransformer implements TransformerContract
         switch ($response->getStatusCode()) {
             case 200:
                 return Payment::populate((array) \GuzzleHttp\json_decode($response->getBody()), $sdk);
+
                 break;
             case 404:
                 throw new ResourceNotFoundException("Payment with id `{$this->meta['id']}` was not found");
                 break;
             default:
-                throw new G2aException("Request could not be processed");
+                throw new G2aException('Request could not be processed');
                 break;
         }
     }

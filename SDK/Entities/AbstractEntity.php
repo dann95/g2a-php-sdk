@@ -7,7 +7,6 @@ use GeneratedHydrator\Configuration;
 
 abstract class AbstractEntity
 {
-
     protected $sdk;
 
     public function __construct(Sdk $sdk)
@@ -17,15 +16,17 @@ abstract class AbstractEntity
 
     /**
      * @param array $fillable
-     * @param Sdk $sdk
+     * @param Sdk   $sdk
+     *
      * @return static
      */
     public static function populate(array $fillable, Sdk $sdk)
     {
         $config = new Configuration(get_called_class());
         $hydratorClass = $config->createFactory()->getHydratorClass();
-        $hydrator = new $hydratorClass;
+        $hydrator = new $hydratorClass();
         $instance = new static($sdk);
+
         return $hydrator->hydrate($fillable, $instance);
     }
 }

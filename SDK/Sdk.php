@@ -34,6 +34,7 @@ class Sdk
 
     /**
      * Sdk constructor.
+     *
      * @param $apiHash
      * @param $merchantEmail
      * @param $apiSecret
@@ -46,8 +47,8 @@ class Sdk
         $this->crypto = new Crypto();
         $this->httpClient = new Client([
             'headers' => [
-                'Authorization' => "{$apiHash}; ".$this->crypto->authorizationHeader($apiHash, $merchantEmail, $apiSecret)
-            ]
+                'Authorization' => "{$apiHash}; ".$this->crypto->authorizationHeader($apiHash, $merchantEmail, $apiSecret),
+            ],
         ]);
     }
 
@@ -56,7 +57,7 @@ class Sdk
      */
     public function payments()
     {
-        return (new Payment($this));
+        return new Payment($this);
     }
 
     /**
@@ -64,7 +65,7 @@ class Sdk
      */
     public function subscriptions()
     {
-        return (new Subscription($this));
+        return new Subscription($this);
     }
 
     /**
@@ -72,7 +73,7 @@ class Sdk
      */
     public function notifications()
     {
-        return (new Notification($this));
+        return new Notification($this);
     }
 
     /**
