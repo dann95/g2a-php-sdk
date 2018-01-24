@@ -1,8 +1,6 @@
 <?php
 
-
 namespace G2A\Auth;
-
 
 class CredentialsBag
 {
@@ -10,10 +8,12 @@ class CredentialsBag
      * @var string
      */
     private $hash;
+
     /**
      * @var string
      */
     private $mail;
+
     /**
      * @var string
      */
@@ -21,6 +21,7 @@ class CredentialsBag
 
     /**
      * CredentialsBag constructor.
+     *
      * @param $apiHash
      * @param $merchantEmail
      * @param $apiSecret

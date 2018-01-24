@@ -8,8 +8,8 @@
  */
 
 return [
-    'hash'          => '',
-    'secret'        => '',
-    'email'         => '',
-    'environment'   => 'SANDBOX', // SANDBOX || PRODUCTION
+    'hash' => '',
+    'secret' => '',
+    'email' => '',
+    'environment' => 'SANDBOX', // SANDBOX || PRODUCTION
 ];

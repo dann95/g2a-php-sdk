@@ -1,8 +1,6 @@
 <?php
 
-
 namespace G2A\Checkout;
-
 
 class Cart
 {
@@ -10,22 +8,27 @@ class Cart
      * @var array
      */
     private $items = [];
+
     /**
      * @var string
      */
     private $surl;
+
     /**
      * @var string
      */
     private $furl;
+
     /**
      * @var string
      */
     private $address;
+
     /**
      * @var string
      */
     private $currency;
+
     /**
      * @var mixed
      */
@@ -33,6 +36,7 @@ class Cart
 
     /**
      * Cart constructor.
+     *
      * @param $successUrl
      * @param $failUrl
      */
@@ -46,21 +50,25 @@ class Cart
 
     /**
      * @param Item $item
+     *
      * @return $this
      */
     public function add(Item $item)
     {
         $this->items[] = $item;
+
         return $this;
     }
 
     /**
      * @param Address $address
+     *
      * @return $this
      */
     public function setAddress(Address $address)
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -81,7 +89,7 @@ class Cart
             'amount' => array_reduce($items, function ($res, $item) {
                 return $res += $item['amount'];
             }, 0),
-            'items' => $items
+            'items' => $items,
         ];
 
         return $result;

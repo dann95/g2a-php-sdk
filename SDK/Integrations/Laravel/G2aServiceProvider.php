@@ -1,6 +1,5 @@
 <?php
 
-
 namespace G2A\Integrations\Laravel;
 
 use G2A\Sdk;
@@ -17,6 +16,7 @@ class G2aServiceProvider extends ServiceProvider
     {
         $this->app->bind('G2A', function () {
             $configs = config('g2a');
+
             return new Sdk(
                 $configs['hash'],
                 $configs['email'],

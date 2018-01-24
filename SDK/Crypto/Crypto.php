@@ -1,8 +1,6 @@
 <?php
 
-
 namespace G2A\Crypto;
-
 
 class Crypto
 {
@@ -10,6 +8,7 @@ class Crypto
      * @param $apiHash
      * @param $merchantEmail
      * @param $apiSecret
+     *
      * @return string
      */
     public function authorizationHeader($apiHash, $merchantEmail, $apiSecret)
@@ -22,6 +21,7 @@ class Crypto
      * @param $amount
      * @param $currency
      * @param $ApiSecret
+     *
      * @return string
      */
     public function payment($userOrderId, $amount, $currency, $ApiSecret)
@@ -34,6 +34,7 @@ class Crypto
      * @param $userOrderId
      * @param $amount
      * @param $apiSecret
+     *
      * @return string
      */
     public function notification($transactionId, $userOrderId, $amount, $apiSecret)
@@ -47,6 +48,7 @@ class Crypto
      * @param $amount
      * @param $refundedAmount
      * @param $ApiSecret
+     *
      * @return string
      */
     public function refund($transactionId, $userOrderId, $amount, $refundedAmount, $ApiSecret)
@@ -57,11 +59,11 @@ class Crypto
     /**
      * @param $name
      * @param $arguments
+     *
      * @return mixed
      */
     public static function __callStatic($name, $arguments)
     {
-        return (new static())->$name(... $arguments);
+        return (new static())->$name(...$arguments);
     }
-
 }

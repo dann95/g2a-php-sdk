@@ -7,6 +7,7 @@ use G2A\Entities\AbstractEntity;
 class Checkout extends AbstractEntity
 {
     private $status;
+
     private $token;
 
     /**
@@ -14,7 +15,7 @@ class Checkout extends AbstractEntity
      */
     public function success()
     {
-        return $this->status == 'ok';
+        return 'ok' == $this->status;
     }
 
     /**
@@ -22,7 +23,7 @@ class Checkout extends AbstractEntity
      */
     public function redirect()
     {
-        return $this->sdk->endpoints()->quote()."gateway?token=".$this->token;
+        return $this->sdk->endpoints()->quote().'gateway?token='.$this->token;
     }
 
     /**
