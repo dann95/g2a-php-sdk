@@ -1,0 +1,7 @@
+preset: symfony
+
+risky: yes
+
+finder:
+  exclude:
+    - "tests"
