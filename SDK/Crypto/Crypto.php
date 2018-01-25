@@ -39,7 +39,7 @@ class Crypto
      */
     public function notification($transactionId, $userOrderId, $amount, $apiSecret)
     {
-        return hash('sha256', $transactionId.$userOrderId.number_format($amount,2).$apiSecret);
+        return hash('sha256', $transactionId.$userOrderId.number_format($amount, 2).$apiSecret);
     }
 
     /**
@@ -53,7 +53,7 @@ class Crypto
      */
     public function refund($transactionId, $userOrderId, $amount, $refundedAmount, $ApiSecret)
     {
-        return hash('sha256', $transactionId.$userOrderId.number_format($amount,2).number_format($refundedAmount, 2).$ApiSecret);
+        return hash('sha256', $transactionId.$userOrderId.number_format($amount, 2).number_format($refundedAmount, 2).$ApiSecret);
     }
 
     /**
