@@ -27,8 +27,8 @@ class Endpoints
             ],
         ];
 
-        if (! array_key_exists($key = strtoupper($env), $endpoints)) {
-            throw new WrongEnvironment(sprintf("The environment %s does not exists", $env));
+        if (!array_key_exists($key = strtoupper($env), $endpoints)) {
+            throw new WrongEnvironment(sprintf('The environment %s does not exists', $env));
         }
         $this->quote = $endpoints[$key]['quote'];
         $this->merchant = $endpoints[$key]['merchant'];
