@@ -6,23 +6,23 @@ use G2A\Entities\AbstractEntity;
 
 class Payment extends AbstractEntity
 {
-    private $transactionId;
+    protected $transactionId;
 
-    private $userOrderId;
+    protected $userOrderId;
 
-    private $amount;
+    protected $amount;
 
-    private $currency;
+    protected $currency;
 
-    private $status;
+    protected $status;
 
-    private $createdAt;
+    protected $createdAt;
 
-    private $refundedAmount;
+    protected $refundedAmount;
 
-    private $customer;
+    protected $customer;
 
-    private $items;
+    protected $items;
 
     public function refund($amount)
     {

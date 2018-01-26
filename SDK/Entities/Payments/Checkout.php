@@ -6,9 +6,9 @@ use G2A\Entities\AbstractEntity;
 
 class Checkout extends AbstractEntity
 {
-    private $status;
+    protected $status;
 
-    private $token;
+    protected $token;
 
     /**
      * @return bool
