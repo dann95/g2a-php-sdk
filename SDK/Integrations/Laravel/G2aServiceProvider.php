@@ -9,7 +9,7 @@ class G2aServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishes([__DIR__.'/laravel-config.php' => 'g2a.php']);
+        $this->publishes([__DIR__.'/laravel-config.php' => config_path('g2a.php')], 'g2a');
     }
 
     public function register()
