@@ -4,14 +4,20 @@ namespace G2A\Checkout;
 
 class RecurringPayment
 {
-
     const DAILY = 'daily';
+
     const WEEKLY = 'weekly';
+
     const MONTHLY = 'monthly';
+
     const QUARTERLY = 'quarterly';
+
     const SEMIANNUALLY = 'semi-annually';
+
     const ANNUALLY = 'annually';
+
     const TYPE_PRODUCT = 'product';
+
     const TYPE_DONATION = 'donation';
 
     /**
@@ -40,8 +46,8 @@ class RecurringPayment
     private $frequency;
 
     public function __construct($name,
-                                $period = RecurringPayment::MONTHLY,
-                                $type = RecurringPayment::TYPE_PRODUCT,
+                                $period = self::MONTHLY,
+                                $type = self::TYPE_PRODUCT,
                                 $start = null,
                                 $frequency = 1
     ) {
