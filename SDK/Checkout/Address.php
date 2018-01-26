@@ -5,17 +5,26 @@ namespace G2A\Checkout;
 class Address
 {
     private $firstName;
+
     private $lastName;
+
     private $zipCode;
+
     private $countryCode;
+
     private $county;
+
     private $city;
+
     private $line1;
+
     private $line2;
+
     private $company;
 
     /**
      * Address constructor.
+     *
      * @param $firstName
      * @param $lastName
      * @param $zipCode
@@ -61,7 +70,7 @@ class Address
             'city' => $this->city,
             'company' => $this->company,
             'county' => $this->county,
-            'country' => $this->countryCode
+            'country' => $this->countryCode,
         ];
     }
 }
