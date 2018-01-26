@@ -30,7 +30,7 @@ abstract class AbstractHandler
      *
      * @return AbstractEntity
      */
-    public function handleApiRequest(Request $request, TransformerContract $transformer)
+    protected function handleApiRequest(Request $request, TransformerContract $transformer)
     {
         try {
             $res = $this->sdk

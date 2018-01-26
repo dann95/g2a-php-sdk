@@ -55,11 +55,19 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
     }
 
     /**
+     * @return array
+     */
+    private function entityVars()
+    {
+        return array_diff_key(get_object_vars($this), array_flip(['sdk']));
+    }
+
+    /**
      * @return array|mixed
      */
     public function jsonSerialize()
     {
-        return array_diff_key(get_object_vars($this), array_flip(['sdk']));
+        return $this->entityVars();
     }
 
     /**
@@ -76,5 +84,13 @@ abstract class AbstractEntity implements ArrayAccess, JsonSerializable
         $instance = new static($sdk);
 
         return $hydrator->hydrate($fillable, $instance);
+    }
+
+    /**
+     * @return array
+     */
+    public function __debugInfo()
+    {
+        return $this->entityVars();
     }
 }
