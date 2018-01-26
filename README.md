@@ -46,5 +46,28 @@ $sdk = new \G2A\Sdk(
  
 ```
 
+## Laravel integration (optional)
+
+Insert the provider into providers array in config/app.php
+
+```php
+'providers' => [
+    // previous providers
+     \G2A\Integrations\Laravel\G2aServiceProvider::class,   
+    // next providers
+]
+```
+
+Then run the following command:
+```bash
+php artisan vendor:publish --tag=g2a
+```
+
+Now when you do, it will give you a fresh instance of SDK using settings on config/g2a.php:
+```php
+
+$sdk = app('G2A');
+
+```
 ## Contribute
 Feel free to contribute to this repository.
