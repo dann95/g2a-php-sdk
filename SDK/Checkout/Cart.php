@@ -71,14 +71,24 @@ class Cart
         return $this;
     }
 
+    /**
+     * @param Address $address
+     * @return $this
+     */
     public function setShippingAddress(Address $address)
     {
-
+        $this->shippingAddress = $address;
+        return $this;
     }
 
+    /**
+     * @param Address $address
+     * @return $this
+     */
     public function setBillingAddress(Address $address)
     {
-
+        $this->billingAddress = $address;
+        return $this;
     }
 
     /**
