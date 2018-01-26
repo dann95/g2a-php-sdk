@@ -1,10 +1,9 @@
 <?php
 
 /**
- * Following steps are to simulate that we received a POST request
+ * Following steps are to simulate that we received a POST request.
  */
-
-$postSampleFromDocs = <<<EOL
+$postSampleFromDocs = <<<'EOL'
 type=payment
 &transactionId=eac61839-7db6-4cab-8ec3-9708c4676938
 &userOrderId=70001010467320
@@ -20,11 +19,9 @@ EOL;
 parse_str($postSampleFromDocs, $_POST);
 
 /**
- * Now the real code like:
+ * Now the real code like:.
  */
-
 require_once '../vendor/autoload.php';
-
 
 $apiHash = 'cac3f440-7cc0-4c8b-8482-dbf8f1fe4d45';
 $apiSecret = 'NaLDGGS5KBxsq&qewSC@uLSIidKlrxb2LwFb0hfLsR1WPr&97A2_UU7?$RlmCAnW';
@@ -38,14 +35,14 @@ $sdk = new \G2A\Sdk(
     $env
 );
 
-/**
+/*
  * checkFromGlobals takes $_POST to get the parameters, but you can also call ->check() giving an array as parameter.
  */
 var_dump($sdk->notifications()->checkFromGlobals());
 
-echo "<br>";
+echo '<br>';
 
-/**
+/*
  * Its also available as helper, the Crypto class
  */
 var_dump(\G2A\Crypto\Crypto::notification($_POST['transactionId'], $_POST['userOrderId'], $_POST['amount'], $apiSecret));

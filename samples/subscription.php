@@ -18,7 +18,7 @@ $recurring = new \G2A\Checkout\RecurringPayment('vip signature', \G2A\Checkout\R
 
 $vip = new \G2A\Checkout\Item(1000, 'Vip 30 days', 19.99, 1, 1, 'http://mysite.com/vip');
 
-$cart = new \G2A\Checkout\Cart(6063, 'http://mysite.com/checkout-thanks', 'http://mysite.com/checkout-fail','USD', $recurring);
+$cart = new \G2A\Checkout\Cart(6063, 'http://mysite.com/checkout-thanks', 'http://mysite.com/checkout-fail', 'USD', $recurring);
 
 $cart->add($vip);
 

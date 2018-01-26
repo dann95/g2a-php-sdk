@@ -10,6 +10,7 @@ class Subscription extends AbstractHandler
 {
     /**
      * @param Cart $cart
+     *
      * @return \G2A\Entities\Payments\Checkout
      */
     public function create(Cart $cart)

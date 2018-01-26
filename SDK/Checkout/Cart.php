@@ -1,7 +1,7 @@
 <?php
 
 namespace G2A\Checkout;
-use G2A\Checkout\RecurringPayment;
+
 use G2A\Exceptions\G2aException;
 
 class Cart
@@ -43,10 +43,11 @@ class Cart
 
     /**
      * Cart constructor.
+     *
      * @param $orderId
      * @param $successUrl
      * @param $failUrl
-     * @param string $currency
+     * @param string                              $currency
      * @param \G2A\Checkout\RecurringPayment|null $subscription
      */
     public function __construct($orderId, $successUrl, $failUrl, $currency = 'USD', RecurringPayment $subscription = null)
@@ -107,13 +108,15 @@ class Cart
 
     /**
      * @return array
+     *
      * @throws G2aException
      */
     public function __toRecurringCheckout()
     {
-        if($this->subscription instanceof RecurringPayment) {
+        if ($this->subscription instanceof RecurringPayment) {
             return $this->__toCheckout() + $this->subscription->__toCart();
         }
-        throw new G2aException("No recurring payment was set to this cart!");
+
+        throw new G2aException('No recurring payment was set to this cart!');
     }
 }

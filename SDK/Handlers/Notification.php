@@ -6,6 +6,7 @@ class Notification extends AbstractHandler
 {
     /**
      * @param array $notification
+     *
      * @return bool
      */
     public function check(array $notification)
@@ -23,6 +24,7 @@ class Notification extends AbstractHandler
 
     /**
      * @param array $notification
+     *
      * @return bool
      */
     private function validate(array $notification)
