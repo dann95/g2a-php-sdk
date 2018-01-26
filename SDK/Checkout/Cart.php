@@ -21,7 +21,6 @@ class Cart
      */
     private $furl;
 
-
     private $billingAddress;
 
     private $shippingAddress;
@@ -73,21 +72,25 @@ class Cart
 
     /**
      * @param Address $address
+     *
      * @return $this
      */
     public function setShippingAddress(Address $address)
     {
         $this->shippingAddress = $address;
+
         return $this;
     }
 
     /**
      * @param Address $address
+     *
      * @return $this
      */
     public function setBillingAddress(Address $address)
     {
         $this->billingAddress = $address;
+
         return $this;
     }
 
@@ -111,11 +114,11 @@ class Cart
             'items' => $items,
         ];
 
-        if($this->billingAddress instanceof Address) {
+        if ($this->billingAddress instanceof Address) {
             $result['addresses']['billing'] = $this->billingAddress->__toCart();
         }
 
-        if($this->shippingAddress instanceof Address) {
+        if ($this->shippingAddress instanceof Address) {
             $result['addresses']['shipping'] = $this->shippingAddress->__toCart();
         }
 
