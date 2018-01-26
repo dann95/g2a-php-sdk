@@ -3,13 +3,11 @@
 namespace G2A\Entities;
 
 use G2A\Sdk;
-use \JsonSerializable;
-use \ArrayAccess;
-
+use JsonSerializable;
+use ArrayAccess;
 use GeneratedHydrator\Configuration;
 
-abstract class AbstractEntity implements ArrayAccess,
-                                         JsonSerializable
+abstract class AbstractEntity implements ArrayAccess, JsonSerializable
 {
     /**
      * @var Sdk
@@ -18,6 +16,7 @@ abstract class AbstractEntity implements ArrayAccess,
 
     /**
      * AbstractEntity constructor.
+     *
      * @param Sdk $sdk
      */
     public function __construct(Sdk $sdk)
@@ -27,6 +26,7 @@ abstract class AbstractEntity implements ArrayAccess,
 
     /**
      * @param mixed $offset
+     *
      * @return bool
      */
     public function offsetExists($offset)
@@ -36,6 +36,7 @@ abstract class AbstractEntity implements ArrayAccess,
 
     /**
      * @param mixed $offset
+     *
      * @return mixed
      */
     public function offsetGet($offset)
