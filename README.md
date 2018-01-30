@@ -9,6 +9,20 @@
 
 This SDK is an unofficial software with no warranties by G2A PAY ®, you can check more about G2A in: https://www.g2a.com/
 
+## Contents
+
+* [Requirements](#requirements)
+* [Installation](#composer)
+* [Available resources](#available-resources)
+* [Getting started](#getting-started)
+    * [Checkout sample](samples/checkout.php)
+    * [IPN Verify sample](samples/ipn.php)
+    * [Subscription sample](samples/subscription.php)
+    * [Query payment sample](samples/query-transaction.php)
+* [Laravel integration](#laravel-integration-optional)
+* [Project goals/todo](#goalstodo)
+* [Contribute](#contribute)
+
 ## Requirements
 
 - PHP 7.0 and later.
@@ -27,6 +41,26 @@ To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/00-in
 ```php
 require_once('vendor/autoload.php');
 ```
+
+## Available resources
+Due some API limitations from G2A, this SDK is restricted to few operations, see the table below to know what this SDK can do.
+API means that this is available on this SDK
+
+EMAIL means that is only available by e-mail contact
+
+DASHBOARD means that is only available in merchant dashboard
+
+### Payments
+
+| create  | query  | refund  |
+|:-:|:-:|:-:|
+| API | API  | EMAIL |
+
+### Subscriptions
+
+| create | cancel  | query  | refund  |  list transactions |
+|:-:|:-:|---|---|---|
+| API  |  DASHBOARD |  DASHBOARD | EMAIL  | DASHBOARD  |
 
 ## Getting Started
 
@@ -69,5 +103,25 @@ Now when you do, it will give you a fresh instance of SDK using settings on conf
 $sdk = app('G2A');
 
 ```
+
+Or, when inside a Controller/any part of Laravel where Auto Dependency Injection is available:
+```php
+class FooBarController extends Controller
+{
+    public function checkout(\G2A\Sdk $sdk)
+    {
+        dd($sdk);
+    }
+}
+```
+
+## Goals/Todo
+
+- [ ] 100% Unit coverage
+- [ ] Use abstraction of HttpClient instead of Guzzle
+- [ ] Do a Legacy version, for php 5.4+
+- [ ] Full error detailed Exceptions and Entities
+- [ ] Release first stable version (1.0.0)
+
 ## Contribute
 Feel free to contribute to this repository.

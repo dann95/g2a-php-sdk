@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tests\Unit\Entities;
+namespace G2aTests\Unit\Entities;
 
 use G2A\Entities\AbstractEntity;
 

@@ -20,7 +20,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "G2aTests\\": "tests/"
         }
     },
     "require-dev": {
@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-
+                "G2A\\Integrations\\Laravel\\G2aServiceProvider"
             ]
         }
     },

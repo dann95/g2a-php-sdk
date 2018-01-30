@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use G2A\Entities\AbstractEntity;
-use Tests\Unit\Entities\FooEntity;
+use G2aTests\Unit\Entities\FooEntity;
 use G2A\Sdk;
 
 class AbstractEntityTest extends TestCase
