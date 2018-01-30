@@ -15,7 +15,7 @@ class G2aServiceProvider extends ServiceProvider
     public function register()
     {
         $configs = config('g2a');
-        $this->app->bind('G2A', function () use($configs) {
+        $this->app->bind('G2A', function () use ($configs) {
             return new Sdk(
                 $configs['hash'],
                 $configs['email'],
@@ -23,7 +23,7 @@ class G2aServiceProvider extends ServiceProvider
                 $configs['environment']
             );
         });
-        $this->app->bind(Sdk::class, function () use($configs) {
+        $this->app->bind(Sdk::class, function () use ($configs) {
             return new Sdk(
                 $configs['hash'],
                 $configs['email'],
