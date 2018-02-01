@@ -10,6 +10,14 @@ class Checkout extends AbstractEntity
 
     protected $token;
 
+    protected $error = false;
+
+    protected $error_message;
+
+    protected $error_details;
+
+    protected $error_code;
+
     /**
      * @return bool
      */
