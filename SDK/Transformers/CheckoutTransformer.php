@@ -18,12 +18,12 @@ class CheckoutTransformer implements TransformerContract
         }
 
         $err = [
-            'status'        => 'fail',
-            'error_code'    => $decoded->code,
+            'status' => 'fail',
+            'error_code' => $decoded->code,
             'error_message' => $decoded->message,
-            'error_details' => $decoded->details
+            'error_details' => $decoded->details,
         ];
-        
+
         return Checkout::populate($err, $sdk);
     }
 }
