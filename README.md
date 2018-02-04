@@ -100,7 +100,9 @@ php artisan vendor:publish --tag=g2a
 ```
 
 Edit the file configs/g2a.php, you will have something like this
-*prefer use env() helper instead of strings to save your credentials*
+
+**prefer use env() helper instead of strings to save your credentials**
+
 ```php
 <?php
 /**
