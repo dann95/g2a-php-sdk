@@ -19,7 +19,7 @@ This SDK is an unofficial software with no warranties by G2A PAY ®, you can che
     * [IPN Verify sample](samples/ipn.php)
     * [Subscription sample](samples/subscription.php)
     * [Query payment sample](samples/query-transaction.php)
-* [Laravel integration](#laravel-integration-optional)
+* [Laravel integration](#laravel-integration-optional-integration)
 * [Project goals/todo](#goalstodo)
 * [Contribute](#contribute)
 
@@ -64,6 +64,8 @@ DASHBOARD means that is only available in merchant dashboard
 
 ## Getting Started
 
+### Normal Integration
+
 Setting up credentials be like:
 
 ```php
@@ -80,7 +82,7 @@ $sdk = new \G2A\Sdk(
  
 ```
 
-## Laravel integration (optional)
+### Laravel integration (optional integration)
 
 Insert the provider into providers array in config/app.php
 
@@ -95,6 +97,24 @@ Insert the provider into providers array in config/app.php
 Then run the following command:
 ```bash
 php artisan vendor:publish --tag=g2a
+```
+
+Edit the file configs/g2a.php, you will have something like this
+*prefer use env() helper instead of strings to save your credentials*
+```php
+<?php
+/**
+ * to obtain hash and secret, go to:
+ * https://www.test.pay.g2a.com/setting/merchant (in case of SANDBOX)
+ * https://www.pay.g2a.com/setting/merchant (in case of PRODUCTION)
+ * email is your account e-mail.
+ */
+return [
+    'hash' => '',
+    'secret' => '',
+    'email' => '',
+    'environment' => 'SANDBOX', // SANDBOX || PRODUCTION
+];
 ```
 
 Now when you do, it will give you a fresh instance of SDK using settings on config/g2a.php:
